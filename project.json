@@ -1,0 +1,106 @@
+{
+	"file" : "LyricSyncWallpaper.html",
+	"general" : 
+	{
+		"properties" : 
+		{
+			"alpha" : 
+			{
+				"fraction" : true,
+				"index" : 5,
+				"max" : 1,
+				"min" : 0,
+				"order" : 105,
+				"precision" : 3,
+				"step" : 0.01,
+				"text" : "Cursor Lerp Alpha",
+				"type" : "slider",
+				"value" : 0.1
+			},
+			"bgc" : 
+			{
+				"index" : 1,
+				"order" : 101,
+				"text" : "Background Colour",
+				"type" : "color",
+				"value" : "1 1 1"
+			},
+			"blur" : 
+			{
+				"fraction" : false,
+				"index" : 7,
+				"max" : 64,
+				"min" : 0,
+				"order" : 107,
+				"text" : "Cursor Glow Blur",
+				"type" : "slider",
+				"value" : 32
+			},
+			"delayfix" : 
+			{
+				"fraction" : false,
+				"index" : 0,
+				"max" : 2000,
+				"min" : 0,
+				"order" : 100,
+				"text" : "Delay Fix (Change based on internet speed)",
+				"type" : "slider",
+				"value" : 850
+			},
+			"details" : 
+			{
+				"index" : 3,
+				"order" : 103,
+				"text" : "Include Song Info",
+				"type" : "bool",
+				"value" : true
+			},
+			"fgc" : 
+			{
+				"index" : 2,
+				"order" : 102,
+				"text" : "Foreground Colour",
+				"type" : "color",
+				"value" : "0 0 0"
+			},
+			"schemecolor" : 
+			{
+				"order" : 0,
+				"text" : "ui_browse_properties_scheme_color",
+				"type" : "color",
+				"value" : "0 0 0"
+			},
+			"spread" : 
+			{
+				"fraction" : false,
+				"index" : 6,
+				"max" : 64,
+				"min" : 0,
+				"order" : 106,
+				"text" : "Cursor Glow Spread",
+				"type" : "slider",
+				"value" : 32
+			},
+			"titlehighlight" : 
+			{
+				"index" : 8,
+				"order" : 108,
+				"text" : "Title Highlighting",
+				"type" : "bool",
+				"value" : true
+			},
+			"usebgc" : 
+			{
+				"index" : 4,
+				"order" : 104,
+				"text" : "Use Album Colour",
+				"type" : "bool",
+				"value" : false
+			}
+		}
+	},
+	"preview" : "preview.jpg",
+	"title" : "Synced Lyrics + Album Overlay",
+	"type" : "web",
+	"version" : 0
+}
