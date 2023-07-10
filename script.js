@@ -73,12 +73,14 @@ document.addEventListener("DOMContentLoaded", (ev) => {
     const artistEl = document.getElementById("artist")
     const artEl = document.getElementById("art")
 
-    var currentTimeouts = new Set();
+    var currentTimeouts = [];
+    var currentSong = "";
+
     function clearTimeouts() {
         currentTimeouts.forEach((v) => {
-            clearTimeout(v);
+            clearTimeout(v.id);
         })
-        currentTimeouts.clear();
+        currentTimeouts.length = 0;
         var mx = setTimeout(()=>{});
         for(var i = 0; i < mx; i ++) {
             clearTimeout(i);
@@ -86,13 +88,20 @@ document.addEventListener("DOMContentLoaded", (ev) => {
     }
     function addTimeout(tm, v,title) {
         var tmid = setTimeout(() => {
+            if(title != currentSong) {
+                currentTimeouts.filter((k)=>k.song != currentSong).forEach((j) => {
+                    clearTimeout(j)
+                    // can be removed from array at a later date, doesn't REAAAAAAAAAAAAAAALLY matter lol.
+                })
+                return;
+            }
             if(titleHighlight)
             lyricEl.innerHTML = v.toLowerCase().replace(new RegExp(title.toLowerCase().replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), "g"), (match) => {
                 return `<span style="color:${titleLyricHighlightColour};">${match.toUpperCase()}</span>`
             })
             else lyricEl.textContent = v.toLowerCase();
         }, tm)
-        currentTimeouts.add(tmid);
+        currentTimeouts.push({id: tmid, song: title});
     }
 
 
