@@ -183,8 +183,8 @@ document.addEventListener("DOMContentLoaded", (ev) => {
                 case 0:
                     clearTimeouts();
                     const lyr = getLyricsSynced(response);
-                    var skipahead = (Date.now() - timestamp);
-                    if(skipahead > 0) skipahead += skipaheadDelayFix
+                    var skipahead = (Date.now() - timestamp) || 0;
+                    skipahead += skipaheadDelayFix
                     if(seek != -1) skipahead += seek * 1000
                     lyricEl.textContent =  `${event.artist} - ${event.title} ${lyr.synced?"[Synced]":"[Unsynced]"}`
                     console.log(skipahead, event.title, currentTimeouts);
