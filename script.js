@@ -90,8 +90,7 @@ document.addEventListener("DOMContentLoaded", (ev) => {
         var tmid = setTimeout(() => {
             if(title != currentSong) {
                 currentTimeouts.filter((k)=>k.song != currentSong).forEach((j) => {
-                    clearTimeout(j)
-                    // can be removed from array at a later date, doesn't REAAAAAAAAAAAAAAALLY matter lol.
+                    clearTimeout(j.id)
                 })
                 return;
             }
@@ -120,6 +119,7 @@ document.addEventListener("DOMContentLoaded", (ev) => {
     var useBgc = false;
     var glowSpread = 32, glowBlur = 32, glowLerpAlpha = 0.1;
     var titleHighlight = true;
+    var seek = 0;
 
     function doCursorGlowLerp(tmstmp) {
         var newX = lerp(mousePos.oldX, mousePos.x, glowLerpAlpha);
@@ -163,13 +163,13 @@ document.addEventListener("DOMContentLoaded", (ev) => {
     window.wallpaperRegisterMediaThumbnailListener(wallpaperMediaThumbnailListener);
 
     function wallpaperMediaPropertiesListener(event) {
+        seek = -1;
         const keywords = event.title.replace(/-\s+(feat|with|prod).*/i, "").replace(/(\(|\[)(feat|with|prod)\.?\s+.*(\)|\])$/i, "").trim().replace(/\s-\s.*/, "") + " " + event.artist
         const timestamp = Date.now();
         titleEl.textContent = event.title;
         artistEl.textContent = event.artist;
-        clearTimeouts();
+        currentSong = event.title;
         findLyrics(keywords).then((r) => {
-            clearTimeouts();
             const code = r[0]
             const response = r[1]
             switch (code) {
@@ -183,9 +183,11 @@ document.addEventListener("DOMContentLoaded", (ev) => {
                 case 0:
                     clearTimeouts();
                     const lyr = getLyricsSynced(response);
-                    var skipahead = Date.now() - timestamp;
+                    var skipahead = (Date.now() - timestamp);
+                    if(skipahead > 0) skipahead += skipaheadDelayFix
+                    if(seek != -1) skipahead += seek * 1000
                     lyricEl.textContent =  `${event.artist} - ${event.title} ${lyr.synced?"[Synced]":"[Unsynced]"}`
-                    if(skipahead > 0) skipahead += skipaheadDelayFix;
+                    console.log(skipahead, event.title, currentTimeouts);
                     if(lyr.synced) {
                         for(var lyric of lyr.synced) {
                             if(lyric.startTime - skipahead <= 0) continue;
@@ -197,8 +199,15 @@ document.addEventListener("DOMContentLoaded", (ev) => {
         })
 
     }
+
+    
+
     window.wallpaperRegisterMediaPropertiesListener(wallpaperMediaPropertiesListener);
 
+    function wallpaperMediaTimelineListener(ev) {
+        seek = ev.position; // called v. irregular, still need some manual workarounds
+    }
+    window.wallpaperRegisterMediaTimelineListener(wallpaperMediaTimelineListener);
 
     
     window.wallpaperPropertyListener = {
