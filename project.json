@@ -29,7 +29,7 @@
 			{
 				"fraction" : false,
 				"index" : 7,
-				"max" : 64,
+				"max" : 256,
 				"min" : 0,
 				"order" : 107,
 				"text" : "Cursor Glow Blur",
@@ -74,7 +74,7 @@
 			{
 				"fraction" : false,
 				"index" : 6,
-				"max" : 64,
+				"max" : 256,
 				"min" : 0,
 				"order" : 106,
 				"text" : "Cursor Glow Spread",
