@@ -61,9 +61,12 @@ body, html {
 #title {
     font-size: 30px;
 }
-
-#artist {
+#artist, #stats {
     font-size: 24px;
+}
+#stats {
+    font-style: italic;
+    font-weight: 100;
 }
 
 #art {

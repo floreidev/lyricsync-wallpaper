@@ -7,10 +7,10 @@
 			"alpha" : 
 			{
 				"fraction" : true,
-				"index" : 5,
+				"index" : 4,
 				"max" : 1,
 				"min" : 0,
-				"order" : 105,
+				"order" : 104,
 				"precision" : 3,
 				"step" : 0.01,
 				"text" : "Cursor Lerp Alpha",
@@ -19,8 +19,8 @@
 			},
 			"bgc" : 
 			{
-				"index" : 1,
-				"order" : 101,
+				"index" : 0,
+				"order" : 100,
 				"text" : "Background Colour",
 				"type" : "color",
 				"value" : "1 1 1"
@@ -28,37 +28,34 @@
 			"blur" : 
 			{
 				"fraction" : false,
-				"index" : 7,
+				"index" : 6,
 				"max" : 256,
 				"min" : 0,
-				"order" : 107,
+				"order" : 106,
 				"text" : "Cursor Glow Blur",
 				"type" : "slider",
 				"value" : 32
 			},
-			"delayfix" : 
-			{
-				"fraction" : false,
-				"index" : 0,
-				"max" : 2000,
-				"min" : 0,
-				"order" : 100,
-				"text" : "Delay Fix (Change based on internet speed)",
-				"type" : "slider",
-				"value" : 850
-			},
 			"details" : 
 			{
-				"index" : 3,
-				"order" : 103,
+				"index" : 2,
+				"order" : 102,
 				"text" : "Include Song Info",
 				"type" : "bool",
 				"value" : true
 			},
+			"dostatsfm" : 
+			{
+				"index" : 8,
+				"order" : 108,
+				"text" : "Show stats.fm Stats",
+				"type" : "bool",
+				"value" : false
+			},
 			"fgc" : 
 			{
-				"index" : 2,
-				"order" : 102,
+				"index" : 1,
+				"order" : 101,
 				"text" : "Foreground Colour",
 				"type" : "color",
 				"value" : "0 0 0"
@@ -73,26 +70,35 @@
 			"spread" : 
 			{
 				"fraction" : false,
-				"index" : 6,
+				"index" : 5,
 				"max" : 256,
 				"min" : 0,
-				"order" : 106,
+				"order" : 105,
 				"text" : "Cursor Glow Spread",
 				"type" : "slider",
 				"value" : 32
 			},
+			"statsfmusername" : 
+			{
+				"condition" : "dostatsfm.value === true",
+				"index" : 9,
+				"order" : 109,
+				"text" : "stats.fm Account Name",
+				"type" : "textinput",
+				"value" : ""
+			},
 			"titlehighlight" : 
 			{
-				"index" : 8,
-				"order" : 108,
+				"index" : 7,
+				"order" : 107,
 				"text" : "Title Highlighting",
 				"type" : "bool",
 				"value" : true
 			},
 			"usebgc" : 
 			{
-				"index" : 4,
-				"order" : 104,
+				"index" : 3,
+				"order" : 103,
 				"text" : "Use Album Colour",
 				"type" : "bool",
 				"value" : false
